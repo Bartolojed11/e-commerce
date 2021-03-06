@@ -6,10 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Notifications\Admin\ResetPassword;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +32,7 @@ class User extends Authenticatable
      * @var string
      */
 
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'admin_id';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,4 +52,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
 }
