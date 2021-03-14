@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -44,9 +46,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = 0)
+    public function show(Product $product)
     {
-        return view('admin.products.view');
+        $product->load('inventories');
+
+        $inventory = $product->inventories()->first();
+        return view('admin.products.view', compact(['product', 'inventory']));
     }
 
     /**
@@ -55,9 +60,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        return view('admin.products.form');
+        $product->load('inventories');
+
+        $inventory = $product->inventories()->first();
+        return view('admin.products.form', compact(['product', 'inventory']));
     }
 
     /**
@@ -69,7 +77,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd();
     }
 
     /**
@@ -80,6 +88,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd();
     }
 }

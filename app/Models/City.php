@@ -29,7 +29,7 @@ class City extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function province(): BelongsTo
+    public function province() 
     {
         return $this->belongsTo(Province::class, 'province_id', 'province_id');
     }
@@ -39,7 +39,7 @@ class City extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function barangay(): HasMany
+    public function barangay() 
     {
         return $this->hasMany(Barangay::class, 'city_id', 'city_id');
     }

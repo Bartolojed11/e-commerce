@@ -27,7 +27,7 @@ class OrderItem extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function order(): BelongsTo
+    public function order() 
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
@@ -37,7 +37,7 @@ class OrderItem extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function product(): BelongsTo
+    public function product() 
     {
         return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }

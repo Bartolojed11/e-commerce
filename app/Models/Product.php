@@ -27,7 +27,7 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function inventories(): HasMany
+    public function inventories()
     {
         return $this->hasMany(ProductInventory::class, 'product_id', 'product_id');
     }
@@ -37,7 +37,7 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orderItems(): HasMany
+    public function orderItems() 
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'product_id');
     }

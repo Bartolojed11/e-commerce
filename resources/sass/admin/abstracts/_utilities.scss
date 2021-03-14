@@ -10,3 +10,11 @@ $paddings: 4em, 5em, 8em;
     padding: $padding
   }
 }
+
+.view-only {
+  border: 0px !important;
+  background-color: inherit !important;
+  border-bottom: 1px solid $primary !important;
+  border-radius: 0px !important;
+  outline: none !important;
+}

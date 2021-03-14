@@ -26,7 +26,7 @@ class OrderShippingAddress extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function order(): BelongsTo
+    public function order() 
     {
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }

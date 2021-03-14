@@ -11,8 +11,12 @@ export default {
 
     mounted() {
         if (JSON.parse(this.$refs.product.innerHTML)) {
-            this.rotator = JSON.parse(this.$refs.product.innerHTML);
+            Object.assign(this.product, JSON.parse(this.$refs.product.innerHTML))
         }
+
+        setTimeout(function() {
+            console.table(this.product)
+        }, 3000)
     },
 
     created() {
@@ -51,7 +55,14 @@ export default {
         },
 
         editProduct() {
-
+            // this.
+            // name: '',
+            // product_id: 0,
+            // price: 0,
+            // description: '',
+            // keywords: '',
+            // permalink: '',
+            // active: 1,
         },
 
         validateBeforeSubmit(passed) {

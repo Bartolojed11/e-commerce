@@ -28,7 +28,7 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function items(): HasMany
+    public function items() 
     {
         return $this->hasMany(OrderItem::class, 'order_id', 'order_id');
     }
@@ -38,7 +38,7 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function status(): HasOne
+    public function status() 
     {
         return $this->hasOne(Status::class, 'status_id', 'status_id');
     }
@@ -48,7 +48,7 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function shippingAddress(): HasOne
+    public function shippingAddress() 
     {
         return $this->hasOne(OrderShippingAddress::class, 'order_id', 'order_id');
     }
