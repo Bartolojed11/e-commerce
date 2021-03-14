@@ -9,7 +9,7 @@
         <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
         Product
       </b-breadcrumb-item>
-      <b-breadcrumb-item href="#foo" active>Add</b-breadcrumb-item>
+      <b-breadcrumb-item href="#foo" active> {{ isset($product->product_id) ? 'Edit' : 'Add'  }} </b-breadcrumb-item>
       {{-- <b-breadcrumb-item active>Product 1</b-breadcrumb-item> --}}
     </b-breadcrumb>
   </div>
@@ -21,10 +21,10 @@
               @include('admin.products.partials.description');
             </b-tab>
 
-            <b-tab title="Inventory" :title-item-class="'fnt-1pt6-em'">
+            <b-tab title="Inventory" :title-item-class="'fnt-1pt6-em'" @if(! isset($product)) {{ 'disabled' }} @endif>
               @include('admin.products.partials.inventory')      
             </b-tab>
-            <b-tab title="Images" :title-item-class="'fnt-1pt6-em'">
+            <b-tab title="Images" :title-item-class="'fnt-1pt6-em'" @if(! isset($product)) {{ 'disabled' }} @endif>
 
             </b-tab>
           </b-tabs>
