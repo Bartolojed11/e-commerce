@@ -1,0 +1,13 @@
+@mixin active() {
+    background-color: darken($primary, 5);
+    a {
+        color: $white !important;
+    }
+}
+
+@mixin primaryHover() {
+    background-color: darken($primary, 5);
+    a {
+        color: $white;
+    }
+}

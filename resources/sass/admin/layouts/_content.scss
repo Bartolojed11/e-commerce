@@ -1,0 +1,27 @@
+.add-product {
+    font-size: 62.5% !important;
+
+    .breadcrumb-position {
+        position: absolute;
+        left: 32em;
+        top: 8em;
+
+        ol li {
+            font-size: 1.6em;
+        }
+    }
+    
+    .cms-container {    
+        position: absolute;
+        right: 2em;
+        left: 32em;
+        top: 14em;
+    }
+
+    .cms-container-content {
+        background-color: $lightest-orange;
+        position: relative;
+        padding: 2em;
+    }
+    
+}

@@ -1,0 +1,28 @@
+.sidebar {
+    font-size: 62.5% !important;
+    position: fixed;
+    top: 6.4em;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    width: 28em;
+    background-color: $gray_i;
+    font-size: 1.6em;
+    
+    li {
+        padding: 1.6em;
+        a {
+            display: block;
+            color: $gray_v;
+            font-size: 1.6em;
+        }
+    }
+
+    li:hover {
+        @include primaryHover();
+    }
+
+    .active {
+        @include active();
+    }
+}

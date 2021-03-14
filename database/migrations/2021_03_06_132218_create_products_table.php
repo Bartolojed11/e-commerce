@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->float('price')->default('0.00');
             $table->text('keywords')->nullable();
+            $table->boolean('active')->nullable()->default(TRUE);
             $table->unsignedBigInteger('created_by')->default(0);
             $table->unsignedBigInteger('updated_by')->default(0);
             $table->timestamps();

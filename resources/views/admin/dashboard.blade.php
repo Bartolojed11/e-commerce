@@ -14,10 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }} ADMIN
-                    @php
-                        var_dump(Auth::user()->name);
-                    @endphp
+                    {{ __('You are logged in!') }} {{ Auth::user()->first_name }}
                 </div>
             </div>
         </div>

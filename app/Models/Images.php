@@ -19,4 +19,10 @@ class Images extends Model
 
     // Temporary
     protected $guarded = [];
+
+    
+    public function object()
+    {
+        return $this->morphTo();
+    }
 }

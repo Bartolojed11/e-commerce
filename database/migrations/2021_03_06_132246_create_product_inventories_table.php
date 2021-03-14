@@ -19,6 +19,7 @@ class CreateProductInventoriesTable extends Migration
             $table->integer('quantity')->nullable()->default(0);
             $table->integer('low_stock')->nullable()->default(0);
             $table->boolean('track_inventory')->nullable()->default(FALSE);
+            $table->boolean('active')->nullable()->default(TRUE);
 
             // Foreign key
             $table->foreign('product_id')->references('product_id')->on('products');

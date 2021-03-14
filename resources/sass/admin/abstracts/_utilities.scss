@@ -1,0 +1,12 @@
+// fonts
+.fnt-1pt6-em {
+    font-size: 1.6em;
+}
+
+$paddings: 4em, 5em, 8em;
+
+@each $padding in $paddings {
+  .padding-#{$padding} {
+    padding: $padding
+  }
+}
