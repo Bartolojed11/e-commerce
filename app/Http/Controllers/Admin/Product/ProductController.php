@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Models\Product;
+use App\Http\Controllers\Admin\Product\ProductDataController;
 
-class ProductController extends Controller
+class ProductController extends ProductDataController
 {
     private $page = 'product';
     /**
@@ -18,9 +19,12 @@ class ProductController extends Controller
     public function index()
     {
         $page = $this->page;
-
-        // dd(Product::paginate(10));
-        return view('admin.products.index', compact('page'));
+        $products = Product::paginate(10);
+        $actions = json_encode($this->setActions($products));
+        $fields = $this->setFields();
+        $products = json_encode($products);
+        
+        return view('admin.products.index', compact(['page', 'products', 'fields', 'actions']));
     }
 
     /**
