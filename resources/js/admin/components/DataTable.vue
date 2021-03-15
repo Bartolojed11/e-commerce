@@ -1,7 +1,7 @@
 <template>
     <div>
         <search-box></search-box>
-        <table-content :filtered="items"></table-content>
+        <table-content :filtered="data" :fields="fields" :actions="actions"></table-content>
         <pagination></pagination>
     </div>
 </template>
@@ -12,6 +12,10 @@ import Pagination from './Pagination';
 import TableContent from './Table.vue';
 
 export default {
+    props: ['data', 'fields', 'actions'],
+    mounted() {
+
+    },
     data() {
         return {
             items: {},
@@ -19,7 +23,7 @@ export default {
             perPage: '',
             currentPage: '',
             total: '',
-            lastPage: ''
+            lastPage: '',
         }
     },
     components: {
