@@ -1,4 +1,4 @@
-.add-product {
+.product-form {
     font-size: 62.5% !important;
 
     .breadcrumb-position {
@@ -24,4 +24,10 @@
         padding: 2em;
     }
     
+}
+
+.add-item {
+    position: absolute;
+    right: 2em;
+    top: 8em;
 }

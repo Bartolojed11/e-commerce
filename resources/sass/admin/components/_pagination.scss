@@ -1,0 +1,12 @@
+.vue-pagination {
+    margin: 2em 1em;
+    display: flex;
+
+    ul li a {
+        font-size: 1.6em;
+    }
+
+    &__right {
+        justify-content: flex-end;
+    }
+}

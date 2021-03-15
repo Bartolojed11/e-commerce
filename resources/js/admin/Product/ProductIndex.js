@@ -1,12 +1,11 @@
 'use strict';
 
-
-// import AdminTable from '';
+import Datatable from '../components/DataTable';
 
 export default {
 
     components: {
-        // 'admin-table' : AdminTable
+        'admin-table' : Datatable
     },
 
     mounted() {

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="add-product">
+<div class="product-form">
   <div class="breadcrumb-position">
     <b-breadcrumb>
       <b-breadcrumb-item href="{{ route('admin.product.index') }}">
@@ -11,6 +11,11 @@
       <b-breadcrumb-item active>{{ $product->name }}</b-breadcrumb-item>
     </b-breadcrumb>
   </div>
+
+  <div class="add-item">
+    <a type="button" class="btn btn-primary" href="{{ route('admin.product.create') }}">Add Product</a>
+  </div>
+
   <div class="cms-container">
     <div class="cms-container-content">
       <div>

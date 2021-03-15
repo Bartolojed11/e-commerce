@@ -1,0 +1,24 @@
+.table {
+    width: 100%;
+    color: $dark-gray;
+    border-collapse: collapse;
+
+    &__center {
+        text-align: center;
+    }
+
+    thead {
+        font-weight: bold;
+    }
+
+    th, td {
+        padding: .5em 1em;
+        font-size: 1.6em;
+    }
+
+    &__bordered {
+        th, td {
+            border: 1px solid $light-gray;
+        }
+    }   
+}

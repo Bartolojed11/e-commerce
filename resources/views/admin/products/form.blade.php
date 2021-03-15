@@ -2,16 +2,20 @@
 
 @section('content')
 
-<div class="add-product">
+<div class="product-form">
   <div class="breadcrumb-position">
     <b-breadcrumb>
-      <b-breadcrumb-item href="#home">
+      <b-breadcrumb-item href="{{ route('admin.product.index') }}">
         <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
         Product
       </b-breadcrumb-item>
       <b-breadcrumb-item href="#foo" active> {{ isset($product->product_id) ? 'Edit' : 'Add'  }} </b-breadcrumb-item>
       {{-- <b-breadcrumb-item active>Product 1</b-breadcrumb-item> --}}
     </b-breadcrumb>
+  </div>
+
+  <div class="add-item">
+    <a type="button" class="btn btn-primary" href="{{ route('admin.product.create') }}">Add Product</a>
   </div>
   <div class="cms-container">
     <div class="cms-container-content">

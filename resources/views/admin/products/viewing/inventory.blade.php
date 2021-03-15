@@ -82,7 +82,7 @@
 
   <div class="d-flex justify-content-center">
     <div class="form-group">
-      <a type="button" class="btn btn-info" href="{{ route('admin.product.edit', ['product' => $product->product_id]) }}">Edit</a>
+      <a type="button" class="btn btn-primary" href="{{ route('admin.product.edit', ['product' => $product->product_id]) }}">Edit</a>
     </div>
   </div>
 </div>
