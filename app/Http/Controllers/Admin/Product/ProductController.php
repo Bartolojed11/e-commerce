@@ -9,6 +9,7 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    private $page = 'product';
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $page = $this->page;
+
+        // dd(Product::paginate(10));
+        return view('admin.products.index', compact('page'));
     }
 
     /**
@@ -26,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.form');
+        $page = $this->page;
+        return view('admin.products.form', compact('page'));
     }
 
     /**
@@ -51,7 +56,8 @@ class ProductController extends Controller
         $product->load('inventories');
 
         $inventory = $product->inventories()->first();
-        return view('admin.products.view', compact(['product', 'inventory']));
+        $page = $this->page;
+        return view('admin.products.view', compact(['product', 'inventory', 'page']));
     }
 
     /**
@@ -65,7 +71,8 @@ class ProductController extends Controller
         $product->load('inventories');
 
         $inventory = $product->inventories()->first();
-        return view('admin.products.form', compact(['product', 'inventory']));
+        $page = $this->page;
+        return view('admin.products.form', compact(['product', 'inventory', 'page']));
     }
 
     /**

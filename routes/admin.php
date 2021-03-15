@@ -40,6 +40,10 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
 
 Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
     Route::resource('product', 'Product\ProductController');
+    Route::resource('order', 'Order\OrderController');
+    Route::resource('admin', 'Admin\AdminController');
+    Route::resource('user', 'User\UserController');
+    Route::resource('shipping', 'Shipping\ShippingController');
 
     // Product Inventory
     Route::delete('product/{product}/inventory/{inventory}', 'Product\ProductInventoryController@destroy')->name('product.inventory.destroy');
