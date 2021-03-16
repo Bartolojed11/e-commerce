@@ -2,13 +2,13 @@
     <div>
         <table class="table table__bordered">
             <thead class="table__center">
-                <td v-for="header in fields.header" :key="header">
+                <td v-for="header in fields.header">
                     {{ header }}
                 </td>
             </thead>
             <tbody>
-                <tr v-for="(row, index) in filtered.data" :key="index">
-                   <td v-for="header in fields.header" :key="row[header]">
+                <tr v-for="(row, index) in filtered.data">
+                   <td v-for="header in fields.header">
                         <span v-if="header != 'actions'">{{ row[header] }}</span>
 
                         <a v-if="header == 'actions' && row[header]['view'] != null"
