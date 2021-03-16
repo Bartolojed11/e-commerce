@@ -20,7 +20,11 @@
         <div class="cms-container-content">
             <product-template inline-template>
                 <product-index inline-template>
-                    <admin-table :data="{{ $products }}" :fields="{{ json_encode($fields) }}" :actions="{{ $actions }}"></admin-table>
+                    <admin-table
+                      :data="{{ json_encode($products) }}"
+                      :fields="{{ json_encode($fields) }}"
+                      :actions="{{ $actions }}"
+                      :links="{{ json_encode( $products->links()) }}"></admin-table>
                 </product-index>
             </product-template>
         </div>

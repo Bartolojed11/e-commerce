@@ -54,7 +54,7 @@
                     <div class="row">
                       <div class="col-lg-2">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" value="1" name="track_inventory" id="inventory.track_inventory" v-model="track_inventory" checked>
+                          <input class="form-check-input" type="radio" value="1" name="track_inventory" id="track_inventory" v-model="inventory.track_inventory" checked>
                           <label class="form-check-label" for="yes">
                             Yes
                           </label>

@@ -19,11 +19,9 @@ class ProductController extends ProductDataController
     public function index()
     {
         $page = $this->page;
-        $products = Product::paginate(10);
+        $products = Product::paginate(3);
         $actions = json_encode($this->setActions($products));
         $fields = $this->setFields();
-        $products = json_encode($products);
-        
         return view('admin.products.index', compact(['page', 'products', 'fields', 'actions']));
     }
 
