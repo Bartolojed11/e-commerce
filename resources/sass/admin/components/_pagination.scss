@@ -9,4 +9,14 @@
     &__right {
         justify-content: flex-end;
     }
+
+    .page-link:hover {
+        background-color: $primary !important;
+        color: $white !important;
+    }
+
+    .active {
+        background-color: $primary !important;
+        color: $white !important;
+    }
 }
