@@ -40,6 +40,7 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
 
 Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
     Route::resource('product', 'Product\ProductController');
+    Route::get('product/list/get', 'Product\ProductController@getList')->name('getlist');
     Route::resource('order', 'Order\OrderController');
     Route::resource('admin', 'Admin\AdminController');
     Route::resource('user', 'User\UserController');
