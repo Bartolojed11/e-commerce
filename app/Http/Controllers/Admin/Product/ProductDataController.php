@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\SearchController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\Product;
 
-class ProductDataController extends Controller
+class ProductDataController extends SearchController
 {
     protected function setActions($data)
     {   
@@ -20,10 +22,15 @@ class ProductDataController extends Controller
 
     protected function setFields()
     {
-        return [
+        $header = [
             'header' => [
+                'product id', 'name', 'price', 'actions'
+            ],
+            'columns' => [
                 'product_id', 'name', 'price', 'actions'
             ]
         ];
+        $header = json_encode($header);
+        return $header;
     }
 }

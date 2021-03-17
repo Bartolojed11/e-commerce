@@ -11,6 +11,13 @@ use App\Http\Controllers\Admin\Product\ProductDataController;
 class ProductController extends ProductDataController
 {
     private $page = 'product';
+    public $module = '';
+
+    public function __construct()
+    {
+        $this->module = New Product;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,10 +26,9 @@ class ProductController extends ProductDataController
     public function index()
     {
         $page = $this->page;
-        $products = Product::paginate(3);
-        $actions = json_encode($this->setActions($products));
         $fields = $this->setFields();
-        return view('admin.products.index', compact(['page', 'products', 'fields', 'actions']));
+
+        return view('admin.products.index', compact(['page', 'fields']));
     }
 
     /**
