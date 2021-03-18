@@ -6,12 +6,36 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Models\Product;
-use App\Http\Controllers\Admin\Product\ProductDataController;
+use App\Http\Controllers\Admin\SearchController;
 
-class ProductController extends ProductDataController
+use App\Helpers\AdminResponse;
+
+class ProductController extends SearchController
 {
-    private $page = 'product';
+
+    use AdminResponse;
+
+    public $page = 'product';
     public $module = '';
+    public $header = [
+        'id',
+        'name',
+        'price',
+        'actions'
+    ];
+
+    public $columns = [
+        'product_id',
+        'name',
+        'price',
+        'actions',
+    ];
+
+    public $actions = [
+        'view' => 'show',
+        'edit' => 'edit',
+        'delete' => 'destroy'
+    ];
 
     public function __construct()
     {
@@ -26,6 +50,7 @@ class ProductController extends ProductDataController
     public function index()
     {
         $page = $this->page;
+
         $fields = $this->setFields();
 
         return view('admin.products.index', compact(['page', 'fields']));
