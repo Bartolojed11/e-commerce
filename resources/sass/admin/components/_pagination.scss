@@ -1,13 +1,28 @@
 .vue-pagination {
     margin: 2em 1em;
-    display: flex;
+    position: relative;
+    height: 3em;
 
     ul li a {
         font-size: 1.6em;
     }
 
     &__right {
-        justify-content: flex-end;
+        position: absolute;
+        right: 0;
+    }
+
+    &__left {
+        position: absolute;
+        left: 0;
+    }
+
+    .pagination-info {
+        height: 3em;
+        display: flex;
+        align-items: center;
+        font-size: 1.3em;
+        color: $dark-gray;
     }
 
     .page-link:hover {

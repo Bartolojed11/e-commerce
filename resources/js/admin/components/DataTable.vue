@@ -6,8 +6,8 @@
         <table-content :filtered="items" :fields="fields"></table-content>
         <pagination
             :total="total"
-            :perPage="perPage"
             :allPages="allPages"
+            :maxPagination="maxPagination"
             @paginate="setCurrentPage($event)"></pagination>
     </div>
 </template>
@@ -29,7 +29,8 @@ export default {
             total: '',
             page: 1,
             searchQ: '',
-            allPages: 1
+            allPages: 1,
+            maxPagination: 3
         }
     },
     components: {
@@ -46,7 +47,7 @@ export default {
             let page = `page=${this.page}`
             let searchParam = '&searchQ='
             let requestUrl = baseUrl + page + '&fields=' + this.fields.columns
-            console.log(this.fields)
+
             if (this.searchQ != '') {
                requestUrl = requestUrl + searchParam + this.searchQ
             }
