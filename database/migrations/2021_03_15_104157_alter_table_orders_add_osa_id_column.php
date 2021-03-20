@@ -14,8 +14,8 @@ class AlterTableOrdersAddOsaIdColumn extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('osa_id')->after('user_id');
-            $table->foreign('osa_id')->references('osa_id')->on('order_shipping_addresses');
+            // $table->unsignedBigInteger('osa_id')->after('user_id');
+            // $table->foreign('osa_id')->references('osa_id')->on('order_shipping_addresses');
         });
     }
 
