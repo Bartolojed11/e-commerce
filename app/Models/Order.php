@@ -15,6 +15,8 @@ class Order extends Model
     // Temporary
     protected $guarded = [];
 
+    protected $with = ['status'];
+
     /**
      * Update name of primary key
      *

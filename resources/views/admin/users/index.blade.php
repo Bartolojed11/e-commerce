@@ -4,9 +4,9 @@
 <div class="product-form">
     <div class="breadcrumb-position">
       <b-breadcrumb>
-        <b-breadcrumb-item href="{{ route('admin.product.index') }}">
+        <b-breadcrumb-item href="{{ route('admin.user.index') }}">
           <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
-          Order
+          Users
         </b-breadcrumb-item>
         <b-breadcrumb-item active>Listing</b-breadcrumb-item>
       </b-breadcrumb>
@@ -14,13 +14,13 @@
 
     <div class="cms-container">
         <div class="cms-container-content">
-            <order-template inline-template>
-                <order-index inline-template>
+            <user-template inline-template>
+                <user-index inline-template>
                     <admin-table
                     :fields="{{ $fields }}"
-                    :module="'orders'"></admin-table>
-                </order-index>
-            </order-template>
+                    :module="'users'"></admin-table>
+                </user-index>
+            </user-template>
         </div>
     </div>
 </div>

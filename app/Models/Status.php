@@ -18,6 +18,8 @@ class Status extends Model
 
     protected $primaryKey = 'status_id';
 
+    protected $table = 'status';
+
     // Temporary
     protected $guarded = [];
 

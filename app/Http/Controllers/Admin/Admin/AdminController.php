@@ -4,9 +4,44 @@ namespace App\Http\Controllers\Admin\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use App\Http\Controllers\Admin\SearchController;
+use App\Helpers\AdminResponse;
 
-class AdminController extends Controller
+class AdminController extends SearchController
 {
+
+    use AdminResponse;
+
+    public $page = 'admin';
+    public $module = '';
+    public $header = [
+        'Admin Id',
+        'Full Name',
+        'Email',
+        // 'Status',
+        'Actions'
+    ];
+
+    public $columns = [
+        'admin_id',
+        'full_name',
+        'email',
+        // 'status.name',
+        'actions',
+    ];
+
+    public $actions = [
+        'view' => 'show',
+        'edit' => 'edit',
+        'delete' => 'destroy'
+    ];
+
+    public function __construct()
+    {
+        $this->module = New Admin;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +49,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $page = $this->page;
+
+        $fields = $this->setFields();
+
+        return view('admin.admins.index', compact(['page', 'fields']));
     }
 
     /**

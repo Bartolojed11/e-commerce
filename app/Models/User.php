@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    // protected $with = ['status'];
+
+    protected $appends = ['full_name'];
+
     /**
      * Update name of primary key
      *
@@ -50,4 +54,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute()
+    {
+        $middle_name = $this->middle_name ?? '';
+        return "{$this->first_name}, {$this->last_name}, {$middle_name}";
+    }
 }

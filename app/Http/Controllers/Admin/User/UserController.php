@@ -4,9 +4,44 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\Admin\SearchController;
+use App\Helpers\AdminResponse;
 
-class UserController extends Controller
+class UserController extends SearchController
 {
+    use AdminResponse;
+
+    public $page = 'user';
+    public $module = '';
+    public $header = [
+        'User Id',
+        'Full Name',
+        'Email',
+        // 'Status',
+        'Actions'
+    ];
+
+    public $columns = [
+        'user_id',
+        'full_name',
+        'email',
+        // 'status.name',
+        'actions',
+    ];
+
+    public $actions = [
+        'view' => 'show',
+        'edit' => 'edit',
+        'delete' => 'destroy'
+    ];
+
+    public function __construct()
+    {
+        $this->module = New User;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +49,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $page = $this->page;
+
+        $fields = $this->setFields();
+
+        return view('admin.users.index', compact(['page', 'fields']));
     }
 
     /**

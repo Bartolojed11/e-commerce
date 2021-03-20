@@ -40,10 +40,17 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
 
 Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
     Route::resource('product', 'Product\ProductController');
-    Route::get('product/list/get', 'Product\ProductController@getList')->name('getlist');
+    Route::get('products/list/get', 'Product\ProductController@getList')->name('getlist');
+
     Route::resource('order', 'Order\OrderController');
+    Route::get('orders/list/get', 'Order\OrderController@getList')->name('getlist');
+
     Route::resource('admin', 'Admin\AdminController');
+    Route::get('admins/list/get', 'Admin\AdminController@getList')->name('getlist');
+
     Route::resource('user', 'User\UserController');
+    Route::get('users/list/get', 'User\UserController@getList')->name('getlist');
+
     Route::resource('shipping', 'Shipping\ShippingController');
 
     // Product Inventory

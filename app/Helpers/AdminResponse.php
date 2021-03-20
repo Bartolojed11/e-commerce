@@ -11,11 +11,12 @@ trait AdminResponse {
         $primaryKey = $this->module->getKeyName();
         
         return $data->each(function ($item) use ($actions, $primaryKey, $page) {
+            $operation = [];
             foreach($actions as $action) {
-                $item->actions = [
-                    $action => route("admin.$page.$action", [$page => $item->{$primaryKey}])
-                ];
+                $operation[$action] = route("admin.$page.$action", [$page => $item->{$primaryKey}]);
             }
+
+            $item->actions = $operation;
         });
     }
 
@@ -26,7 +27,6 @@ trait AdminResponse {
             'columns' => $this->columns
         ];
 
-        $fields = json_encode($fields);
-        return $fields;
+        return json_encode($fields);
     }
 }

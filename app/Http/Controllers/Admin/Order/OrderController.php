@@ -5,10 +5,43 @@ namespace App\Http\Controllers\Admin\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Http\Controllers\Admin\SearchController;
+use App\Helpers\AdminResponse;
 
-class OrderController extends Controller
+class OrderController extends SearchController
 {
-    private $page = 'order';
+
+    use AdminResponse;
+
+    public $page = 'order';
+
+    public $module = '';
+    public $header = [
+        'Order Id',
+        'Reference No',
+        'Date Ordered',
+        'Status',
+        'Actions'
+    ];
+
+    public $columns = [
+        'order_id',
+        'reference_no',
+        'created_at',
+        'status.name',
+        'actions',
+    ];
+
+    public $actions = [
+        'view' => 'show',
+        'edit' => 'edit',
+        'delete' => 'destroy'
+    ];
+
+    public function __construct()
+    {
+        $this->module = new Order;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +50,10 @@ class OrderController extends Controller
     public function index()
     {
         $page = $this->page;
-        return view('admin.orders.index', compact('page'));
+
+        $fields = $this->setFields();
+            
+        return view('admin.orders.index', compact(['page', 'fields']));
     }
 
     /**

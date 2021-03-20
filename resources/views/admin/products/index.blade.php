@@ -22,7 +22,7 @@
               <product-index inline-template>
                   <admin-table
                   :fields="{{ $fields }}"
-                  :module="'product'"></admin-table>
+                  :module="'products'"></admin-table>
               </product-index>
           </product-template>
         </div>

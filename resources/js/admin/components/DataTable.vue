@@ -53,7 +53,7 @@ export default {
             }
 
             axios.get(requestUrl).then(({ data }) => (
-                this.items = data.products,
+                this.items = data[this.module],
                 this.allPages = data.allPages,
                 this.perPage = data.perPage,
                 this.total = data.total

@@ -26,6 +26,10 @@ class Admin extends Authenticatable
         'password',
     ];
 
+    protected $appends = ['full_name'];
+
+    // protected $with = ['status'];
+
     /**
      * Update name of primary key
      *
@@ -62,5 +66,11 @@ class Admin extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function getFullNameAttribute()
+    {
+        $middle_name = $this->middle_name ?? '';
+        return "{$this->first_name}, {$this->last_name}, {$middle_name}";
     }
 }

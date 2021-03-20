@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use App\Models\Product;
 use App\Http\Controllers\Admin\SearchController;
 
@@ -18,10 +17,10 @@ class ProductController extends SearchController
     public $page = 'product';
     public $module = '';
     public $header = [
-        'id',
-        'name',
-        'price',
-        'actions'
+        'Product Id',
+        'Name',
+        'Price',
+        'Actions'
     ];
 
     public $columns = [

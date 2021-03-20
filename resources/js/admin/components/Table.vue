@@ -9,14 +9,14 @@
             <tbody>
                 <tr v-for="(row, index) in filtered">
                    <td v-for="column in fields.columns">
-                        <span v-if="column != 'actions'">{{ row[column] }}</span>
-                        <a v-if="column == 'actions' && row[column]['view'] != null"
-                            :href="row[column]['view']" class="btn btn-primary">View</a>
+                        <span v-if="column != 'actions'">{{ getPropertyValue(column, row) }}</span>
+                        <a v-if="column == 'actions' && row[column]['show'] != null"
+                            :href="row[column]['show']" class="btn btn-primary">View</a>
                         
                         <a  v-if="column == 'actions' && row[column]['edit'] != null"
                             :href="row[column]['edit']" class="btn btn-info">Edit</a>
                         
-                        <button  v-if="column == 'actions' && row[column]['delete'] != null"
+                        <button  v-if="column == 'actions' && row[column]['destroy'] != null"
                             class="btn btn-danger">Delete</button>
                    </td>
                 </tr>
@@ -33,6 +33,18 @@ export default {
         return {
 
         }
+    },
+    methods: {
+        setColVal(row, column) {
+            return _.get(row, column )
+
+            return column.values(ndx);
+        },
+        getPropertyValue(path, obj, separator='.') {
+            var properties = Array.isArray(path) ? path : path.split(separator)
+            return properties.reduce((prev, curr) => prev && prev[curr], obj)
+        }
+
     }
 }
 </script>
