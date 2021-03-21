@@ -1,3 +1,6 @@
+@if( empty($inventory))
+  empty
+@else
 <div>
   <div class="row fnt-1pt6-em">
     <div class="col-lg-6">
@@ -6,7 +9,7 @@
             Quantity
         </label>
         <div class="col-sm-12">
-            <input type="text" name="quantity" class="form-control view-only" disabled value="{{ $inventory->quantity}}">
+            <input type="text" name="quantity" class="form-control view-only" disabled value="{{ $inventory->quantity ?? 0 }}">
         </div>
       </div>
     </div>
@@ -17,7 +20,7 @@
               Low Stock
           </label>
           <div class="col-sm-12">
-              <input type="text" name="low_stock" class="form-control view-only" disabled value="{{ $inventory->low_stock }}">
+              <input type="text" name="low_stock" class="form-control view-only" disabled value="{{ $inventory->low_stock  ?? 0 }}">
           </div>
         </div>
       </div>
@@ -86,3 +89,4 @@
     </div>
   </div>
 </div>
+@endif

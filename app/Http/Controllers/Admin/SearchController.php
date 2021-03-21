@@ -14,7 +14,8 @@ class SearchController extends Controller
 
     public function getList(Request $request)
     {
-        // $sortBy = $request->sortBy ?? 0;
+        $sortBy = $request->sortBy ?? 'updated_at';
+        $sortOrder = $request->sortOrder ?? 'Desc';
         $queryQ = $request->searchQ ?? '';
         $fields = $request->fields ?? [];
         $page = $request->page ?? 1;
@@ -33,6 +34,8 @@ class SearchController extends Controller
                 }
             }
         }
+
+        $object = $object->orderBy($sortBy, $sortOrder);
 
         $data = $object->offset($start)->limit($perPage);
         $data = $data->get();

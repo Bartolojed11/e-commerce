@@ -40,7 +40,9 @@ class ProductRequest extends FormRequest
             'price' => $this->price,
             'description' => $this->description ?? '',
             'keywords' => $this->keywords ?? '',
-            'active' => $this->keywords ?? true
+            'active' => $this->keywords ?? true,
+            'created_by' => auth('admin')->user()->admin_id,
+            'updated_by' => auth('admin')->user()->admin_id
         ];
     }
 }
