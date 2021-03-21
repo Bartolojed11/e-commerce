@@ -23,10 +23,10 @@
 </head>
 <body>
     <div id="app">
-        @guest
+        @auth
             @include('admin.layouts.partials.sidebar')
             @include('admin.layouts.partials.navbar')
-        @endguest
+        @endauth
 
         <main class="py-4">
             @yield('content')

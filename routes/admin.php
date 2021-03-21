@@ -32,13 +32,16 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
         
     });
 
+
+    
+
     Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth:admin');
     Route::get('/', function() {
         return "<a href='/admin/login'>Login</a>";
     });
 });
 
-Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
+Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
     Route::resource('product', 'Product\ProductController');
     Route::get('products/list/get', 'Product\ProductController@getList')->name('getlist');
 

@@ -231,5 +231,15 @@ return [
 
     // Custom Configuration
     'per_page' => env('PER_PAGE', 10),
+    'error_response' => [
+        'add' => 'Failed to create ',
+        'update' => 'Failed to update ',
+        'destroy' => 'Failed to delete '
+    ],
+    'success_response' => [
+        'add' => 'created successfully',
+        'update' => 'updated successfully',
+        'destroy' => 'deleted successfully'
+    ]
 
 ];

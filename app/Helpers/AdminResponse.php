@@ -29,4 +29,26 @@ trait AdminResponse {
 
         return json_encode($fields);
     }
+
+    protected function setResponse($action = 'add', $status = true, $route='', $message = '')
+    {
+        $method = 'success';
+
+        if ($message == '' && $status == false) {
+            $message = config("error_response.$action") . $this->page . ' !';
+            $method = 'error';
+        }
+
+        if ($message == '' && $status == true) {
+            $message = config("success_response.$action") . $this->page . ' !';
+        }
+
+        flash($message)->{$method}();
+
+        if ($route == '') {
+            return redirect()->back();
+        }
+
+        return redirect($route);
+    }
 }

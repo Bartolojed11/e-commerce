@@ -4,7 +4,7 @@
       <div>
       <validation-observer ref="observer">
         <form id="productInventory" method="POST" slot-scope="{ validate }" @submit.prevent="validate().then(validateBeforeSubmit)"
-          @if(isset($product->product_id))
+          @if(isset($product->product_inventory_id))
             action="{{ route('admin.product.inventory.update',
             ['product' => $product->product_id,
             'inventory' => $inventory->product_inventory_id

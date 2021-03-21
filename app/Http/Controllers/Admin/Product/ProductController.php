@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Controllers\Admin\SearchController;
+use App\Http\Requests\Admin\ProductRequest;
 
 use App\Helpers\AdminResponse;
 
@@ -72,9 +73,17 @@ class ProductController extends SearchController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        dd($request->all());
+        $product = $this->module;
+        $product->fill($request->prepared());
+        
+        // TODO session flashing of status on front end
+        if (! $product->save()) {
+            return $this->setResponse('add', false);
+        }
+
+        return $this->setResponse('add', true);
     }
 
     /**
@@ -114,9 +123,17 @@ class ProductController extends SearchController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        dd();
+        $product->fill($request->prepared());
+        $route = route('admin.product.edit', ['product' => $product->product_id]);
+        
+        // TODO session flashing of status
+        if (! $product->save()) {
+            return $this->setResponse('update', false, $route);
+        }
+
+        return $this->setResponse('update', true, $route);
     }
 
     /**
@@ -125,8 +142,12 @@ class ProductController extends SearchController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product_id)
     {
-        dd();
+        if (! $product->delete()) {
+            return $this->setResponse('delete', false);
+        }
+
+        return $this->setResponse('delete', true);
     }
 }
