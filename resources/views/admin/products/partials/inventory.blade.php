@@ -4,17 +4,16 @@
       <div>
       <validation-observer ref="observer">
         <form id="productInventory" method="POST" slot-scope="{ validate }" @submit.prevent="validate().then(validateBeforeSubmit)"
-          @if(isset($product->product_inventory_id))
+          @if(isset($inventory->product_inventory_id))
             action="{{ route('admin.product.inventory.update',
-            ['product' => $product->product_id,
-            'inventory' => $inventory->product_inventory_id
-            ]) }}">
+            [ 'product' => $product->product_id]) }}">
             @method('PUT')
           @else
             action="{{ route('admin.product.inventory.store', ['product' => $product->product_id]) }}">
           @endif
         @csrf
-
+        <input type="hidden" name="product_inventory_id" value="{{ $inventory->product_inventory_id ?? 0 }}">
+        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
         <div class="row fnt-1pt6-em">
             <div class="col-lg-6">
               <div class="form-group row">

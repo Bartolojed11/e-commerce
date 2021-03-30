@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Http\Controllers\Admin\SearchController;
+use App\Helpers\AdminDTableResponse;
 use App\Helpers\AdminResponse;
 
 class AdminController extends SearchController
 {
 
-    use AdminResponse;
+    use AdminDTableResponse, AdminResponse;
 
     public $page = 'admin';
     public $module = '';

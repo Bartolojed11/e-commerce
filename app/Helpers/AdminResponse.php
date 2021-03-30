@@ -3,32 +3,9 @@
 namespace App\Helpers;
 
 trait AdminResponse {
-
-    protected function setActions($data, $actions = [])
-    {   
-        $page = $this->page;
-
-        $primaryKey = $this->module->getKeyName();
-        
-        return $data->each(function ($item) use ($actions, $primaryKey, $page) {
-            $operation = [];
-            foreach($actions as $action) {
-                $operation[$action] = route("admin.$page.$action", [$page => $item->{$primaryKey}]);
-            }
-
-            $item->actions = $operation;
-        });
-    }
-
-    protected function setFields()
-    {
-        $fields = [
-            'header' => $this->header,
-            'columns' => $this->columns
-        ];
-
-        return json_encode($fields);
-    }
+    
+    public $withKey;
+    public $withValue;
 
     protected function setResponse($action = 'add', $status = true, $route='', $message = '')
     {
@@ -45,10 +22,22 @@ trait AdminResponse {
 
         flash($message)->{$method}();
 
-        if ($route == '') {
+
+
+        if ($route == '' && empty($this->withKey)) {
             return redirect()->back();
+        }
+       
+        if (! empty($this->withKey)) {
+            return redirect($route)->with($this->withKey, $this->withValue);
         }
 
         return redirect($route);
+    }
+
+    public function setWith($withKey, $withValue)
+    {
+       $this->withValue = $withValue;
+       $this->withKey = $withKey;
     }
 }

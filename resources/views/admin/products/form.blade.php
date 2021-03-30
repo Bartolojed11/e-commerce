@@ -1,6 +1,9 @@
 @extends('admin.layouts.app')
 
 @section('content')
+@php
+  $tab = isset($tab) ? $tab : '';
+@endphp
 
 <div class="product-form">
   <div class="breadcrumb-position">
@@ -21,14 +24,19 @@
     <div class="cms-container-content">
       <div>
           <b-tabs content-class="mt-3 padding-4em">
-            <b-tab title="Product" :title-item-class="'fnt-1pt6-em'" active>
-              @include('admin.products.partials.description');
+            <b-tab title="Product" :title-item-class="'fnt-1pt6-em'"
+              {{ $tab == '' ? 'active' : ''}}>
+              @include('admin.products.partials.description')
             </b-tab>
 
-            <b-tab title="Inventory" :title-item-class="'fnt-1pt6-em'" @if(! isset($product)) {{ 'disabled' }} @endif>
+            <b-tab title="Inventory" :title-item-class="'fnt-1pt6-em'"
+              {{ $tab == 'inventory' ? 'active' : ''}}
+              @if(! isset($product)) {{ 'disabled' }} @endif>
               @include('admin.products.partials.inventory')      
             </b-tab>
-            <b-tab title="Images" :title-item-class="'fnt-1pt6-em'" @if(! isset($product)) {{ 'disabled' }} @endif>
+            <b-tab title="Images" :title-item-class="'fnt-1pt6-em'"
+              {{ $tab == 'images' ? 'active' : ''}}
+              @if(! isset($product)) {{ 'disabled' }} @endif>
 
             </b-tab>
           </b-tabs>

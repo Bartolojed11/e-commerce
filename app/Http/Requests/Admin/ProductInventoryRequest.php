@@ -13,7 +13,7 @@ class ProductInventoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class ProductInventoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'product_id' => 'required',
+            'quantity' => 'numeric',
+            'low_stock' => 'numeric'
+        ];
+    }
+
+    public function prepared()
+    {
+        return [
+            'product_id' => $this->product_id ?? 0,
+            'quantity' => $this->quantity ?? 0,
+            'low_stock' => $this->low_stock ?? 0,
+            'track_inventory' => $this->track_inventory ?? true,
+            'active' => $this->active ?? true,
         ];
     }
 }

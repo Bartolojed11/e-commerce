@@ -33,9 +33,6 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
     });
 
 
-    
-
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth:admin');
     Route::get('/', function() {
         return "<a href='/admin/login'>Login</a>";
     });
@@ -57,7 +54,8 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App
     Route::resource('shipping', 'Shipping\ShippingController');
 
     // Product Inventory
-    Route::delete('product/{product}/inventory/{inventory}', 'Product\ProductInventoryController@destroy')->name('product.inventory.destroy');
-    Route::put('product/{product}/inventory/{inventory}', 'Product\ProductInventoryController@update')->name('product.inventory.update');
-    Route::POST('product/{product}/inventory', 'Product\ProductInventoryController@store')->name('product.inventory.store');
+    Route::delete('product/{product}/inventory', 'Product\ProductInventoryController@destroy')->name('product.inventory.destroy');
+    Route::put('product/{product}/inventory', 'Product\ProductInventoryController@update')->name('product.inventory.update');
+    Route::post('product/{product}/inventory', 'Product\ProductInventoryController@store')->name('product.inventory.store');
+    Route::get('product/{product}/inventory', 'Product\ProductInventoryController@edit')->name('product.inventory.edit');
 });

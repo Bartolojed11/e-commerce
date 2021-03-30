@@ -8,12 +8,13 @@ use App\Models\Product;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Requests\Admin\ProductRequest;
 
+use App\Helpers\AdminDTableResponse;
 use App\Helpers\AdminResponse;
 
 class ProductController extends SearchController
 {
 
-    use AdminResponse;
+    use AdminDTableResponse, AdminResponse;
 
     public $page = 'product';
     public $module = '';
