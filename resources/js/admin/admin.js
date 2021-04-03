@@ -14,7 +14,6 @@ import { required } from 'vee-validate/dist/rules';
 
 let vm = new Vue({
     el: '#app',
-    
     created() {
         extend('required', {
             ...required,

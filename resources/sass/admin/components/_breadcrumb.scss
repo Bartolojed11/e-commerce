@@ -1,0 +1,35 @@
+.breadcrumb {
+    background-color: $medium-gray;
+    padding: pxToRem(10);
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0;
+    border-radius: 5px;
+
+    a {
+        color: lighten($dark-gray, 30);
+    }
+
+    .active {
+        color: $primary;
+    }
+
+    &-item {
+        padding: 4px;
+    }
+
+    &-item:not(:last-child)::after {
+        content: '/';
+        margin: 0px 8px;
+        color: lighten($dark-gray, 30);
+    }
+
+    span {
+        padding: 5px;
+    }
+
+    &-item a:hover {
+        text-decoration: none;
+    }
+}

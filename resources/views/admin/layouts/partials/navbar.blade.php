@@ -1,12 +1,12 @@
-<nav class="navbar navbar__fix">
-    <ul class="navbar__item">
-        <li class="navbar__list menu"><a href="#"><i class="fas fa-bars"></i></a></li>
-        <li class="navbar__list navbar__start-right navbar__drop">
+<header class="navbar navbar-fix">
+    <ul class="navbar-list">
+        <li class="navbar-item menu"><a href="#"><i class="fas fa-bars"></i></a></li>
+        <li class="navbar-item navbar-start-right navbar-drop">
             <a href="#">Admin</a>
-            <ul class="navbar__drop-item">
-                <li class="navbar__list"><a href="#">Profile</a></li>
-                <li class="navbar__list"><a href="#">Signout</a></li>
+            <ul class="navbar-drop-list">
+                <li class="navbar-item"><a href="#">Profile</a></li>
+                <li class="navbar-item"><a href="#">Signout</a></li>
             </ul>
         </li>
     </ul>
-</nav>
+</header>

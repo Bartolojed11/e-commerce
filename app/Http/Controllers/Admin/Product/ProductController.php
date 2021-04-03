@@ -54,7 +54,9 @@ class ProductController extends SearchController
 
         $fields = $this->setFields();
 
-        return view('admin.products.index', compact(['page', 'fields']));
+        $key = json_encode($this->module->getKeyName());
+
+        return view('admin.products.index', compact(['page', 'fields', 'key']));
     }
 
     /**

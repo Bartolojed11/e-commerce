@@ -38,6 +38,13 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+window.overf = false;
+
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            overflow: false
+        }
+    }
 });

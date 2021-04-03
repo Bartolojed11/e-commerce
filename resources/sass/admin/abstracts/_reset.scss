@@ -12,6 +12,10 @@ html {
     color: #252525;
 }
 
+body {
+    background-color: $light-gray !important;
+}
+
 ul {
     list-style: none;
     a {

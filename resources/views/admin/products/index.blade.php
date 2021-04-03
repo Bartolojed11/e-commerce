@@ -1,31 +1,24 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="product-form">
-    <div class="breadcrumb-position">
-      <b-breadcrumb>
-        <b-breadcrumb-item href="{{ route('admin.product.index') }}">
-          <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
-          Product
-        </b-breadcrumb-item>
-        <b-breadcrumb-item active>Listing</b-breadcrumb-item>
-      </b-breadcrumb>
-    </div>
+<section class="container content-head">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><span><i class="fas fa-tshirt"></i></span>Products</a></li>
+      <li class="breadcrumb-item"><a href="#" class="active">Listing</a></li>
+    </ol>
+    <a type="button" href="{{ route('admin.product.create') }}" class="btn btn-primary btn-right">Add Product</a>
+</section>
 
-    <div class="add-item">
-        <a type="button" class="btn btn-primary" href="{{ route('admin.product.create') }}">Add Product</a>
-    </div>
-
-    <div class="cms-container">
-        <div class="cms-container-content">
-            <product-template inline-template>
-              <product-index inline-template>
-                  <admin-table
-                  :fields="{{ $fields }}"
-                  :module="'products'"></admin-table>
-              </product-index>
-          </product-template>
-        </div>
-    </div>
-</div>
+<section class="card-wrapper container">
+  <div class="card">
+    <product-template inline-template>
+        <product-index inline-template>
+            <admin-table
+            :module-key="{{ $key }}"
+            :fields="{{ $fields }}"
+            :module="'products'"></admin-table>
+        </product-index>
+    </product-template>
+  </div>
+</section>
 @endsection

@@ -1,0 +1,9 @@
+@function pxToRem($px : 0, $polarity : '+') {
+    $html-font-size: 16;
+    @return #{$polarity}#{ $px / $html-font-size}rem;
+}
+
+@function sidebarSize()
+{
+    @return calc(100% - 240px);
+}

@@ -1,0 +1,71 @@
+.navbar {
+    height: pxToRem(64);
+    width: sidebarSize();
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    border-bottom: pxToRem(1) solid lighten($dark-gray, 60);
+    background-color: $white;
+
+    &-fix {
+        position: fixed;
+    }
+
+    &-list {
+        display: flex;
+        height: pxToRem(64);
+        align-items: center;
+
+        a {
+            display: block;
+            color: $dark-gray;
+            line-height: pxToRem(64);
+            padding: 0 pxToRem(15);
+        }    
+    }
+
+    &-item {
+        height: pxToRem(64);
+    }
+
+    &-item:hover &-drop-list {
+        display: block;
+    }
+
+    &-start-right {
+        margin-left: auto;
+    }
+
+    &-drop {
+        position: relative;
+    }
+
+    &-drop &-drop-list {
+        position: absolute; 
+        width: pxToRem(150);
+        display: none;
+        background-color: $white;
+
+        a {
+            color: $dark-gray;
+            border-bottom: pxToRem(1) solid lighten($dark-gray, 60);
+        }
+    }
+
+    &-drop &-drop-list:last-child {
+        right: pxToRem(10, '-');
+    }
+    
+    &-drop-list:not(:last-child) {
+        left: 0;
+    }
+
+    &-item:hover {
+        background-color: $primary;
+    }
+
+    &-item:hover > a {
+        color: $white;
+    }
+}

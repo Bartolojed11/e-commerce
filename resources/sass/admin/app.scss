@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 @import
-  './abstracts/reset',
   './abstracts/variables',
+  './abstracts/reset',
   './abstracts/functions',
   './abstracts/utilities',
   './abstracts/mixins';
@@ -11,11 +11,14 @@
   './vendors/bootstrap';
   
 @import
-  './layouts/navbar',
+  './layouts/header',
   './layouts/sidebar',
   './layouts/content';
 
 @import
+  './components/btn',
+  './components/modal',
+  './components/breadcrumb',
   './components/alerts',
   './components/table',
   './components/search',

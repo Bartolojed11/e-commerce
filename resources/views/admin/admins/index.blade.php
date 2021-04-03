@@ -1,27 +1,23 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="product-form">
-    <div class="breadcrumb-position">
-      <b-breadcrumb>
-        <b-breadcrumb-item href="{{ route('admin.admin.index') }}">
-          <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
-          Admin
-        </b-breadcrumb-item>
-        <b-breadcrumb-item active>Listing</b-breadcrumb-item>
-      </b-breadcrumb>
-    </div>
+  <section class="container content-head">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#"><span><i class="fas fa-users"></i></span>Admin</a></li>
+      <li class="breadcrumb-item"><a href="#" class="active">Listing</a></li>
+    </ol>
+    <a type="button" href="{{ route('admin.admin.create') }}" class="btn btn-primary btn-right">Add Admin</a>
+  </section>
 
-    <div class="cms-container">
-        <div class="cms-container-content">
-            <admin-template inline-template>
-                <admin-index inline-template>
-                    <admin-table
-                    :fields="{{ $fields }}"
-                    :module="'admins'"></admin-table>
-                </admin-index>
-            </admin-template>
-        </div>
+  <section class="card-wrapper container">
+    <div class="card">
+      <admin-template inline-template>
+          <admin-index inline-template>
+              <admin-table
+              :fields="{{ $fields }}"
+              :module="'admins'"></admin-table>
+          </admin-index>
+      </admin-template>
     </div>
-</div>
+  </section>
 @endsection

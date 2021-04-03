@@ -1,28 +1,35 @@
 .sidebar {
-    font-size: 62.5% !important;
-    position: fixed;
-    top: 6.4em;
+    height: 100%;
+    width: pxToRem(240);
+    background-color: $dark-gray;
+    position: absolute;
+    top: 0;
     left: 0;
-    bottom: 0;
-    overflow-y: auto;
-    width: 28em;
-    background-color: $lightest-orange;
-    font-size: 1.6em;
-    
-    li {
-        padding: 1.6em;
-        a {
-            display: block;
-            color: $dark-gray;
-            font-size: 1.6em;
-        }
+    z-index: 100;
+
+    &-fix {
+        position: fixed;
     }
 
-    li:hover {
-        @include primaryHover();
+    .logo a {
+        text-align: center;
+        color: $primary;
+        height: pxToRem(64);
+    }
+
+    a {
+        color: $white;
+        line-height: pxToRem(30);
+        padding: pxToRem(10);
+        display: block;
     }
 
     .active {
-        @include active();
+        background-color: $primary;
+    }
+    
+    .sidebar-item a:hover {
+        background-color: $primary;
+        color: $white
     }
 }

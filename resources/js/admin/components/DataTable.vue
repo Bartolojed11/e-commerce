@@ -3,7 +3,7 @@
         <search-box
             @updateSearchQ="setSearchQ($event)"
         ></search-box>
-        <table-content :filtered="items" :fields="fields"></table-content>
+        <table-content :mkey="moduleKey" :filtered="items" :fields="fields"></table-content>
         <pagination
             :total="total"
             :allPages="allPages"
@@ -18,7 +18,7 @@ import Pagination from './Pagination';
 import TableContent from './Table.vue';
 
 export default {
-    props: ['module', 'fields'],
+    props: ['module', 'fields', 'moduleKey'],
     created() {
         this.getList()
     },
@@ -30,7 +30,8 @@ export default {
             page: 1,
             searchQ: '',
             allPages: 1,
-            maxPagination: 3
+            maxPagination: 3,
+            key: 0
         }
     },
     components: {
@@ -57,6 +58,7 @@ export default {
                 this.allPages = data.allPages,
                 this.perPage = data.perPage,
                 this.total = data.total
+                // this.key = data.key
             ));
         },
         

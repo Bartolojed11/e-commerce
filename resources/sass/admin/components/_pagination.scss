@@ -3,10 +3,6 @@
     position: relative;
     height: 3em;
 
-    ul li a {
-        font-size: 1.6em;
-    }
-
     &__right {
         position: absolute;
         right: 0;
@@ -18,10 +14,8 @@
     }
 
     .pagination-info {
-        height: 3em;
         display: flex;
         align-items: center;
-        font-size: 1.3em;
         color: $dark-gray;
     }
 

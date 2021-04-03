@@ -54,7 +54,9 @@ class UserController extends SearchController
 
         $fields = $this->setFields();
 
-        return view('admin.users.index', compact(['page', 'fields']));
+        $key = json_encode($this->module->getKeyName());
+
+        return view('admin.users.index', compact(['page', 'fields', 'key']));
     }
 
     /**

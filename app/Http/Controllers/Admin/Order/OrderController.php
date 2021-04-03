@@ -53,8 +53,10 @@ class OrderController extends SearchController
         $page = $this->page;
 
         $fields = $this->setFields();
+
+        $key = json_encode($this->module->getKeyName());
             
-        return view('admin.orders.index', compact(['page', 'fields']));
+        return view('admin.orders.index', compact(['page', 'fields', 'key']));
     }
 
     /**

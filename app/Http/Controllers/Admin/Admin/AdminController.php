@@ -54,7 +54,9 @@ class AdminController extends SearchController
 
         $fields = $this->setFields();
 
-        return view('admin.admins.index', compact(['page', 'fields']));
+        $key = json_encode($this->module->getKeyName());
+
+        return view('admin.admins.index', compact(['page', 'fields', 'key']));
     }
 
     /**

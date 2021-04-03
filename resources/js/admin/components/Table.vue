@@ -16,23 +16,29 @@
                         <a  v-if="column == 'actions' && row[column]['edit'] != null"
                             :href="row[column]['edit']" class="btn btn-info">Edit</a>
                         
-                        <button  v-if="column == 'actions' && row[column]['destroy'] != null"
-                            class="btn btn-danger">Delete</button>
+                        <delete-modal
+                            v-if="column == 'actions' && row[column]['destroy'] != null"
+                            :itemId="row[mkey]"></delete-modal>
                    </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 </template>
 
 <script>
+import DeleteModal from './DeleteModal.vue';
 
 export default {
-    props: ['filtered', 'fields'],
+    props: ['filtered', 'fields', 'mkey'],
     data() {
         return {
-
+            delete: 0
         }
+    },
+    components: {
+        'delete-modal' : DeleteModal
     },
     methods: {
         setColVal(row, column) {
@@ -43,7 +49,12 @@ export default {
         getPropertyValue(path, obj, separator='.') {
             var properties = Array.isArray(path) ? path : path.split(separator)
             return properties.reduce((prev, curr) => prev && prev[curr], obj)
-        }
+        },
+
+        showDelete: function(event) {
+            console.table(event)
+            // this.delete = show;
+        },
 
     }
 }

@@ -1,6 +1,6 @@
 <input type="hidden" name="product_id" value="{{ $product->product_id }}">
 
-<div class="row fnt-1pt6-em">
+<div class="row">
   <div class="col-lg-6">
     <div class="form-group row">
       <label for="name" class="col-sm-12 col-form-label">
