@@ -36,10 +36,10 @@ class SearchController extends Controller
         }
 
         $object = $object->orderBy($sortBy, $sortOrder);
+        $total = $object->count();
 
         $data = $object->offset($start)->limit($perPage);
         $data = $data->get();
-        $total = $object->count();
         $actions = $this->actions;
 
         $this->setActions($data, $actions);
