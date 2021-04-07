@@ -17,6 +17,7 @@ class ProductInventoryController extends Controller
     public function edit(Product $product)
     {
         $product->load('inventories');
+        $product->load('media');
 
         $inventory = $product->inventories()->first();
         $page = $this->page;

@@ -98,6 +98,7 @@ class ProductController extends SearchController
     public function show(Product $product)
     {
         $product->load('inventories');
+        $product->load('media');
 
         $inventory = $product->inventories()->first();
         $page = $this->page;
@@ -113,6 +114,7 @@ class ProductController extends SearchController
     public function edit(Product $product)
     {
         $product->load('inventories');
+        $product->load('media');
 
         $inventory = $product->inventories()->first();
         $page = $this->page;

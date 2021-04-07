@@ -58,4 +58,9 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App
     Route::put('product/{product}/inventory', 'Product\ProductInventoryController@update')->name('product.inventory.update');
     Route::post('product/{product}/inventory', 'Product\ProductInventoryController@store')->name('product.inventory.store');
     Route::get('product/{product}/inventory', 'Product\ProductInventoryController@edit')->name('product.inventory.edit');
+
+    // Product Image
+    Route::post('product/image/upload', 'Product\ProductImageController@upload')->name('product.image.upload');
+    Route::delete('product/{product}/image/remove', 'Product\ProductImageController@remove')->name('product.image.remove');
+    Route::get('product/{product}/images', 'Product\ProductImageController@view')->name('product.image.view');
 });

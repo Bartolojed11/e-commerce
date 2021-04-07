@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductInventory;
 use App\Models\OrderItem;
+use App\Models\Images;
 
 class Product extends Model
 {
@@ -40,6 +41,11 @@ class Product extends Model
     public function orderItems() 
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'product_id');
+    }
+
+    public function media() 
+    {
+        return $this->morphMany(Images::class, 'object', 'object', 'object_id', 'product_id');
     }
 
 }

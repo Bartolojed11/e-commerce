@@ -24,7 +24,7 @@
                     @include('admin.products.form.inventory')
                 </b-tab>
                 <b-tab title="Images" {{ $tab == 'images' ? 'active' : '' }} @if (!isset($product)) {{ 'disabled' }} @endif>
-
+                    @include('admin.products.form.images')
                 </b-tab>
             </b-tabs>
         </div>

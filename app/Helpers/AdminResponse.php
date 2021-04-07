@@ -6,11 +6,11 @@ trait AdminResponse {
     
     public $withKey;
     public $withValue;
-
+    
     protected function setResponse($action = 'add', $status = true, $route='', $message = '')
     {
         $method = 'success';
-
+        
         if ($message == '' && $status == false) {
             $message = config("error_response.$action") . $this->page . ' !';
             $method = 'error';
@@ -21,8 +21,6 @@ trait AdminResponse {
         }
 
         flash($message)->{$method}();
-
-
 
         if ($route == '' && empty($this->withKey)) {
             return redirect()->back();
