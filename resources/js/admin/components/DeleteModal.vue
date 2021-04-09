@@ -1,6 +1,8 @@
 <template>
 <div  style="display: inline">
-  <button class="btn btn-danger" @click="deleteData(itemId)">Delete {{ itemId }}</button>
+  <button class="btn btn-danger" :class="addtionalClass" @click="deleteData(itemId)">
+       <slot name="btn-slot"></slot>
+    </button>
   <div class="modal-wrapper" v-if="showDelete">
       <div class="modal-transparent"></div>
         <div class="modal">
@@ -18,7 +20,7 @@
                     Are you sure you want to delete this item?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger">Yes</button>
+                    <button class="btn btn-danger" @click="deleteData(itemId, true)">Yes</button>
                     <button class="btn btn-info" @click="cancelDelete">No</button>
                 </div>
             </div>
@@ -30,16 +32,27 @@
 <script>
 
 export default {
-    props: ['itemId'],
+    props: ['itemId', 'addtionalClass', 'route'],
     data() {
         return {
             showDelete: 0
         }
     },
     methods: {
-      deleteData: function(id) {
+      deleteData: function(id, request = false) {
         this.showDelete = true
         document.querySelector('body').style.overflow = "hidden"
+
+        if (request === true) {
+            axios.post(this.route , { _method: 'DELETE'}).then(function(response) {
+                if (response.status == 200) {
+                    console.log('data deleted successfully');
+                    window.location.reload();
+                }
+            }).catch(function(error) {
+                console.log(error)
+            });
+        }
       },
       cancelDelete: function() {
         this.showDelete = false 

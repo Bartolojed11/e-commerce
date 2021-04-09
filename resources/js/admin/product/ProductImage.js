@@ -3,6 +3,8 @@
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import imgMixin from '../mixins/img';
+import DeleteModal from '../components/DeleteModal';
 
 export default {
     data() {
@@ -13,7 +15,7 @@ export default {
                 acceptedFiles: 'image/*',
                 uploadMultiple: true,
                 autoProcessQueue: true,
-				url: '/admin/product/image/upload',
+				url: '/index.php/admin/product/image/upload',
                 thumbnailWidth: 100,
                 thumbnailHeight: 100,
                 resizeWidth: 1000,
@@ -29,10 +31,13 @@ export default {
         }
     },
 
+    mixins: [imgMixin],
+
     components: {
         'vue-dropzone': vue2Dropzone,
         ValidationProvider,
-        ValidationObserver
+        ValidationObserver,
+        'delete-modal': DeleteModal
     },
 
     methods: { 

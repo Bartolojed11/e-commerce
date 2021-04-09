@@ -18,7 +18,12 @@
                         
                         <delete-modal
                             v-if="column == 'actions' && row[column]['destroy'] != null"
-                            :itemId="row[mkey]"></delete-modal>
+                            :itemId="row[mkey]"
+                            :route="row[column]['delete']">
+                                <template v-slot:btn-slot>
+                                Delete
+                                </template>
+                            </delete-modal>
                    </td>
                 </tr>
             </tbody>

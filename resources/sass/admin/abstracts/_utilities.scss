@@ -3,6 +3,10 @@
     font-size: 1.6em;
 }
 
+.flex {
+  display: flex;
+}
+
 $paddings: 4em, 5em, 8em;
 
 @each $padding in $paddings {
@@ -39,5 +43,21 @@ $paddings: 4em, 5em, 8em;
 }
 
 .m-top-20px {
-  margin-top: 20px;
+  margin-top: pxToRem(20);
+}
+
+.m-10-all {
+  margin: pxToRem(10);
+}
+
+.h-100 {
+    height: pxToRem(100);
+}
+
+.w-100 {
+  width: pxToRem(100);
+}
+
+.b-5-radius {
+  border-radius: pxToRem(5);
 }

@@ -61,6 +61,6 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App
 
     // Product Image
     Route::post('product/image/upload', 'Product\ProductImageController@upload')->name('product.image.upload');
-    Route::delete('product/{product}/image/remove', 'Product\ProductImageController@remove')->name('product.image.remove');
+    Route::delete('product/image/{image}/remove', 'Product\ProductImageController@remove')->name('product.image.remove');
     Route::get('product/{product}/images', 'Product\ProductImageController@view')->name('product.image.view');
 });

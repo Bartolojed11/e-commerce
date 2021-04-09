@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use App\Models\Images as ProductImage;
 use Illuminate\Support\Facades\Storage;
+
+use App\Helpers\AdminResponse;;
 use Image;
 
 class ProductImageController extends Controller
 {
+
+    use AdminResponse;
+
     private $object = 'product';
     public $page = 'product';
 
@@ -44,11 +49,12 @@ class ProductImageController extends Controller
 
                 Storage::disk('public')->put($path, $img);
 
+                // 400x400
                 $img = Image::make($file->getRealPath())->resize(400, 400, function($constraint) {
                     $constraint->aspectRatio();
                 });
                 $img->stream();
-                Storage::disk('public')->put("thumbnails/$path", $img);
+                Storage::disk('public')->put("thumbnails/400x400/$imageHash", $img);
 
                 // 50x50
                 $img = '';
@@ -56,7 +62,7 @@ class ProductImageController extends Controller
                     $constraint->aspectRatio();
                 });
                 $img->stream();
-                Storage::disk('public')->put("thumbnails/50x50/$path", $img);
+                Storage::disk('public')->put("thumbnails/50x50/$imageHash", $img);
 
                 $this->savePath(
                     $path,
@@ -73,7 +79,7 @@ class ProductImageController extends Controller
     public function savePath($path, $imageHash, $filename, $object_id)
     {
         $img = new ProductImage;
-        $img->path = $path;
+        $img->path = 'storage/' . $path;
         $img->name = $filename;
         $img->hash = $imageHash;
         $img->object_id = $object_id;
@@ -81,9 +87,25 @@ class ProductImageController extends Controller
         $img->save();
     }
 
-    public function remove(Request $request)
+    public function remove(ProductImage $image)
     {
-        Log::debug($request->all());
-        Log::info("here");
+
+        if (Storage::disk('public')->exists('thumbnails/400x400/' . $image->hash)) {
+            Storage::disk('public')->delete('thumbnails/400x400/' . $image->hash);
+        }
+
+        if (Storage::disk('public')->exists('thumbnails/50x50/' . $image->hash)) {
+            Storage::disk('public')->delete('thumbnails/50x50/' . $image->hash);
+        }
+
+        if (Storage::disk('public')->exists($image->path)) {
+            Storage::disk('public')->delete($image->path);
+        }
+
+        if (! $image->delete()) {
+            return $this->setResponse('delete', false);
+        }
+
+        return $this->setResponse('delete', true);
     }
 }
