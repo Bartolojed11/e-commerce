@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Order;
 
 class User extends Authenticatable
 {
@@ -59,5 +60,25 @@ class User extends Authenticatable
     {
         $middle_name = $this->middle_name ?? '';
         return "{$this->first_name}, {$this->last_name}, {$middle_name}";
+    }
+
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function getMiddleNameAttribute($value)
+    {
+        return $value != '' ? ucfirst($value) : '';
+    }
+
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(User::class, 'user_id', 'user_id');
     }
 }

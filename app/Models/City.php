@@ -43,4 +43,9 @@ class City extends Model
     {
         return $this->hasMany(Barangay::class, 'city_id', 'city_id');
     }
+
+    public function orderShipping()
+    {
+        return $this->belongsTo(orderShipping::class, 'city_id', 'osa_id');
+    }
 }

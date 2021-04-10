@@ -88,8 +88,13 @@ class OrderController extends SearchController
      */
     public function show(Order $order)
     {
-        dd($order);
-        return view('admin.order.view', compact($order));
+        $order->load('items');
+        $order->load('address');
+        $order->load('user');
+
+        $page = $this->page;
+
+        return view('admin.orders.view', compact(['order', 'page']));
     }
 
     /**

@@ -24,9 +24,6 @@
                                         <i class="fas fa-times-circle"></i>
                                     </template>
                                 </delete-modal>
-                                {{-- <button class="btn btn-danger" v-on:click="">
-                                    <i class="fas fa-times-circle"></i>
-                                </button> --}}
                             </span>
                         </div>
                     @endforeach

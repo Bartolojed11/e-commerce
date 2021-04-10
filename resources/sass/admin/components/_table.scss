@@ -20,4 +20,11 @@
             border: 1px solid $light-gray;
         }
     }   
+
+    .thead_primary {
+        & > tr > td {
+            background-color: $primary;
+            color: $white;
+        }
+    }
 }

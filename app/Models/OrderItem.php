@@ -22,6 +22,8 @@ class OrderItem extends Model
     // Temporary
     protected $guarded = [];
 
+    protected $with = ['product'];
+
     /**
      * Get the order that owns the OrderItem
      *
@@ -39,6 +41,6 @@ class OrderItem extends Model
      */
     public function product() 
     {
-        return $this->belongsTo(Product::class, 'product_id', 'product_id');
+        return $this->hasOne(Product::class, 'product_id', 'product_id');
     }
 }

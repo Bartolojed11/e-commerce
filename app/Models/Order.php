@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderItem;
 use App\Models\Status;
 use App\Models\OrderShippingAddress;
+use App\Models\User;
 
 class Order extends Model
 {
@@ -50,8 +51,13 @@ class Order extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function shippingAddress() 
+    public function address() 
     {
-        return $this->hasOne(OrderShippingAddress::class, 'order_id', 'order_id');
+        return $this->hasOne(OrderShippingAddress::class, 'osa_id', 'osa_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 }

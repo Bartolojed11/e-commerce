@@ -30,4 +30,9 @@ class Barangay extends Model
     {
         return $this->belongsTo(City::class, 'city_id', 'city_id');
     }
+
+    public function orderShipping()
+    {
+        return $this->belongsTo(orderShipping::class, 'barangay_id', 'osa_id');
+    }
 }

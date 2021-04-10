@@ -1,6 +1,10 @@
 // fonts
-.fnt-1pt6-em {
-    font-size: 1.6em;
+.fnt-20 {
+  font-size: pxToRem(20);
+}
+
+.fnt-25 {
+  font-size: pxToRem(25);
 }
 
 .flex {
@@ -44,6 +48,14 @@ $paddings: 4em, 5em, 8em;
 
 .m-top-20px {
   margin-top: pxToRem(20);
+}
+
+.m-bot-20px {
+  margin-bottom: pxToRem(20);
+}
+
+.m-bot-15px {
+  margin-bottom: pxToRem(15);
 }
 
 .m-10-all {

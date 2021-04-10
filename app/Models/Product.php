@@ -38,9 +38,9 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orderItems() 
+    public function orderItem() 
     {
-        return $this->hasMany(OrderItem::class, 'product_id', 'product_id');
+        return $this->belongsTo(orderItem::class, 'product_id', 'product_id');
     }
 
     public function media() 

@@ -26,8 +26,13 @@ class Province extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cities(): HasMany
+    public function cities()
     {
         return $this->hasMany(City::class, 'province_id', 'province_id');
+    }
+
+    public function orderShipping()
+    {
+        return $this->belongsTo(orderShipping::class, 'province_id', 'osa_id');
     }
 }
