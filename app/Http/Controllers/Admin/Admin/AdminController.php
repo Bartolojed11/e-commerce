@@ -8,6 +8,8 @@ use App\Models\Admin;
 use App\Http\Controllers\Admin\SearchController;
 use App\Helpers\AdminDTableResponse;
 use App\Helpers\AdminResponse;
+use App\Http\Requests\Admin\AdminRequest;
+use App\Events\Admin\NewAdmin;
 
 class AdminController extends SearchController
 {
@@ -20,7 +22,6 @@ class AdminController extends SearchController
         'Admin Id',
         'Full Name',
         'Email',
-        // 'Status',
         'Actions'
     ];
 
@@ -28,19 +29,19 @@ class AdminController extends SearchController
         'admin_id',
         'full_name',
         'email',
-        // 'status.name',
         'actions',
     ];
 
     public $actions = [
         'view' => 'show',
-        'edit' => 'edit',
         'delete' => 'destroy'
     ];
 
     public function __construct()
     {
         $this->module = New Admin;
+        $this->columnsExcept = ['full_name'];
+        $this->columnsExceptParams = ['first_name', 'last_name', 'middle_name'];
     }
 
     /**
@@ -66,7 +67,8 @@ class AdminController extends SearchController
      */
     public function create()
     {
-        //
+        $page = $this->page;
+        return view('admin.admins.form', compact('page'));
     }
 
     /**
@@ -75,9 +77,19 @@ class AdminController extends SearchController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
-        //
+        $admin = new Admin;
+        $admin->fill($request->prepared());
+
+        if (! $admin->save()) {
+            return $this->setResponse('add', false);
+        }
+
+        $admin->password = $request->password;
+        event(new NewAdmin($admin));
+       
+        return $this->setResponse('add', true);
     }
 
     /**
@@ -86,9 +98,9 @@ class AdminController extends SearchController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Admin $admin)
     {
-        //
+        return view('admin.admin.view');
     }
 
     /**
@@ -97,21 +109,10 @@ class AdminController extends SearchController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Admin $admin)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $page = $this->page;
+        return view('admin.admins.form', compact(['page', 'admin']));
     }
 
     /**
@@ -120,8 +121,12 @@ class AdminController extends SearchController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Admin $admin)
     {
-        //
+        if (! $product->delete()) {
+            return $this->setResponse('delete', false);
+        }
+
+        return $this->setResponse('delete', true);
     }
 }

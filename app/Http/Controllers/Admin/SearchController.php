@@ -11,6 +11,8 @@ use App\Helpers\AdminResponse;
 class SearchController extends Controller
 {
     use AdminResponse;
+    protected $columnsExcept = [];
+    protected $columnsExceptParams = [];
 
     public function getList(Request $request)
     {
@@ -25,8 +27,10 @@ class SearchController extends Controller
         $object = $this->module;
         if ($queryQ != '') {
             $fields =  explode("," , $fields);
+            $fields = array_merge($fields, $this->columnsExceptParams);
+           
             foreach($fields as $ndx => $field) {
-                if ($field == 'actions') continue;
+                if ($field == 'actions' || in_array($field, $this->columnsExcept)) continue;
                 if ($ndx > 0) {
                     $object = $object->orWhere($field, 'LIKE', "%$queryQ%");
                 } else {
@@ -34,6 +38,7 @@ class SearchController extends Controller
                 }
             }
         }
+
 
         $object = $object->orderBy($sortBy, $sortOrder);
         $total = $object->count();
