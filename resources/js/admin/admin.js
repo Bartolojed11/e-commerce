@@ -7,6 +7,7 @@ import UserTemplate from './user/UserTemplate.js';
 import AdminTemplate from './admin/AdminTemplate.js';
 import OrderTemplate from './order/OrderTemplate.js';
 import ShippingTemplate from './shipping/ShippingTemplate.js';
+import CategoryTemplate from './category/CategoryTemplate.js';
 
 
 import { extend } from 'vee-validate';
@@ -27,5 +28,6 @@ let vm = new Vue({
         'admin-template' : AdminTemplate,
         'order-template' : OrderTemplate,
         'shipping-template' : ShippingTemplate,
+        'category-template' : CategoryTemplate,
     }
 });

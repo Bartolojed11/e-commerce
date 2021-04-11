@@ -4,6 +4,9 @@
         <li class="sidebar-item {{ $page == 'product' ? 'active' : '' }}">
             <a href="{{ route('admin.product.index') }}">Products</a>
         </li>
+        <li class="sidebar-item {{ $page == 'category' ? 'active' : '' }}">
+            <a href="{{ route('admin.category.index') }}">Categories</a>
+        </li>
         <li class="sidebar-item {{ $page == 'order' ? 'active' : '' }}">
             <a href="{{ route('admin.order.index') }}">Orders</a>
         </li>

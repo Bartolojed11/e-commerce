@@ -42,7 +42,7 @@ export default {
       deleteData: function(id, request = false) {
         this.showDelete = true
         document.querySelector('body').style.overflow = "hidden"
-
+        
         if (request === true) {
             axios.post(this.route , { _method: 'DELETE'}).then(function(response) {
                 if (response.status == 200) {
