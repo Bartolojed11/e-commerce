@@ -48,8 +48,8 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App
     Route::resource('admin', 'Admin\AdminController');
     Route::get('admins/list/get', 'Admin\AdminController@getList')->name('getlist');
 
-    Route::resource('user', 'User\UserController');
-    Route::get('users/list/get', 'User\UserController@getList')->name('getlist');
+    // Route::resource('user', 'User\UserController');
+    // Route::get('users/list/get', 'User\UserController@getList')->name('getlist');
 
     Route::resource('shipping', 'Shipping\ShippingController');
 
@@ -63,4 +63,6 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->namespace('App
     Route::post('product/image/upload', 'Product\ProductImageController@upload')->name('product.image.upload');
     Route::delete('product/image/{image}/remove', 'Product\ProductImageController@remove')->name('product.image.remove');
     Route::get('product/{product}/images', 'Product\ProductImageController@view')->name('product.image.view');
+
+    Route::get('category', 'Category\CategoryController@index')->name('category.index');
 });

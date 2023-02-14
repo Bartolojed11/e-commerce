@@ -13,9 +13,6 @@
         <li class="sidebar-item {{ $page == 'admin' ? 'active' : '' }}">
             <a href="{{ route('admin.admin.index') }}">Admins</a>
         </li>
-        <li class="sidebar-item {{ $page == 'user' ? 'active' : '' }}">
-            <a href="{{ route('admin.user.index') }}">Users</a>
-        </li>
         <li class="sidebar-item {{ $page == 'shipping' ? 'active' : '' }}">
             <a href="{{ route('admin.shipping.index') }}">Shipping</a>
         </li>
