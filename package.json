@@ -27,6 +27,7 @@
     "dependencies": {
         "bootstrap-vue": "^2.21.2",
         "kebab-case": "^1.0.1",
-        "vee-validate": "^3.4.5"
+        "vee-validate": "^3.4.5",
+        "vue2-dropzone": "^3.6.0"
     }
 }
